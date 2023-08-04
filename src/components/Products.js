@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useState} from 'react'
 import Searchbar from './Searchbar'
 import products from '../data'
 import {BsFillBagPlusFill } from 'react-icons/bs'
@@ -7,15 +7,19 @@ import { addProduct } from '../store/actions/bag-actions'
 
 const Products = () => {
     const dispatch = useDispatch()
+    const [search,setSearch] = useState('')
     
-    
-    
+    const searchItemHandler= (name) => {
+      setSearch(name)
+    }
     
   return (
     <div className='products'>
-      <Searchbar/>
+    <Searchbar  onChange={searchItemHandler}/>
       <div className='row'>
-        {products.map((product) => {
+        {products.filter((item) => {
+          return search.toLowerCase() === '' ? item : item.title.toLowerCase().includes(search)
+        }).map((product) => {
           
             return (
               <div key={product.id} className="items-card" >

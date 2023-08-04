@@ -30,7 +30,7 @@ const Slidebar = () => {
       {profile.user.name ? (
         <Link to='/login'>
       <div className={`marcket ${locationvalid.pathname === '/login' ? 'active active-login' : ''} ` } style={{background: "white"}}  >
-             <img style={{width: "24px", borderRadius: "50%"}} src={profile.user.imageUrl} />
+             <img style={{width: "24px", borderRadius: "50%"}} src={profile.user.imageUrl} alt='login' />
       </div>
       </Link>
       ): (<Link to='/login'>
